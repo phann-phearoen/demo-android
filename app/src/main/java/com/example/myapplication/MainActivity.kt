@@ -6,13 +6,10 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.adapters.ArticleAdapter
 import com.example.myapplication.viewmodels.ArticleViewModel
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,19 +29,19 @@ class MainActivity : AppCompatActivity() {
     recyclerView.layoutManager = LinearLayoutManager(this)
 
     // Observe the articles LiveData
-    articleViewModel.articles.observe(this, Observer { articles ->
+    articleViewModel.articles.observe(this) { articles ->
       articleAdapter.submitList(articles)
       progressBar.visibility = View.GONE
-    })
+    }
 
     // Observe loading state
-    articleViewModel.isLoading.observe(this, Observer { isLoading ->
+    articleViewModel.isLoading.observe(this) { isLoading ->
       if (isLoading) {
         progressBar.visibility = View.VISIBLE
       } else {
         progressBar.visibility = View.GONE
       }
-    })
+    }
 
     // Fetch the articles
     articleViewModel.fetchArticles()
