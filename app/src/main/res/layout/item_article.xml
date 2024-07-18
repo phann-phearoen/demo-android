@@ -5,12 +5,20 @@
   android:orientation="vertical"
   android:padding="8dp">
 
-  <ImageView
-    android:id="@+id/thumbnailImageView"
+  <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:contentDescription="@string/thubmnail"
-    android:scaleType="centerCrop"/>
+    android:layout_gravity="center">
+
+    <ImageView
+      android:id="@+id/thumbnailImageView"
+      android:layout_width="match_parent"
+      android:layout_height="200dp"
+      android:contentDescription="@string/thubmnail"
+      android:scaleType="centerCrop"
+      android:src="@drawable/rounded_imageview"
+      android:clipToOutline="true" />
+  </androidx.cardview.widget.CardView>
 
   <TextView
     android:id="@+id/titleTextView"
